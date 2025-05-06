@@ -1,0 +1,261 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ET\\FlutterApp\\event_api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\services\\participantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:services\\participantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\services\\registrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:services\\registrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\models\\customfield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:models\\customfield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\controllers\\admineventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:controllers\\admineventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\controllers\\participantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:controllers\\participantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\dtos\\answerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:dtos\\answerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\dtos\\registrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:dtos\\registrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\services\\interfaces\\iregistrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:services\\interfaces\\iregistrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\services\\interfaces\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:services\\interfaces\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|d:\\et\\flutterapp\\event_api\\migrations\\20250506044421_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DEDE00E-E014-4E8C-9279-452AF3298306}|event_api.csproj|solutionrelative:migrations\\20250506044421_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20250506044421_InitialCreate.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Migrations\\20250506044421_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250506044421_InitialCreate.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Migrations\\20250506044421_InitialCreate.cs",
+              "RelativeToolTip": "Migrations\\20250506044421_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:44:21.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegistrationService.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Services\\RegistrationService.cs",
+              "RelativeDocumentMoniker": "Services\\RegistrationService.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Services\\RegistrationService.cs",
+              "RelativeToolTip": "Services\\RegistrationService.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAxwGsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T19:26:43.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AnswerDto.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\DTOs\\AnswerDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\AnswerDto.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\DTOs\\AnswerDto.cs",
+              "RelativeToolTip": "DTOs\\AnswerDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T20:44:43.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CustomField.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Models\\CustomField.cs",
+              "RelativeDocumentMoniker": "Models\\CustomField.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Models\\CustomField.cs",
+              "RelativeToolTip": "Models\\CustomField.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAwwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T21:12:25.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ParticipantController.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Controllers\\ParticipantController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ParticipantController.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Controllers\\ParticipantController.cs",
+              "RelativeToolTip": "Controllers\\ParticipantController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwC0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T18:18:18.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAmwE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T19:54:48.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ParticipantService.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Services\\ParticipantService.cs",
+              "RelativeDocumentMoniker": "Services\\ParticipantService.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Services\\ParticipantService.cs",
+              "RelativeToolTip": "Services\\ParticipantService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T18:17:54.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwDEAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:47:36.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RegistrationController.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Controllers\\RegistrationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RegistrationController.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Controllers\\RegistrationController.cs",
+              "RelativeToolTip": "Controllers\\RegistrationController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T19:28:21.655Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AdminEventController.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Controllers\\AdminEventController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminEventController.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Controllers\\AdminEventController.cs",
+              "RelativeToolTip": "Controllers\\AdminEventController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAiwD0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T09:48:36.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAwwEMAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T19:39:58.127Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IRegistrationService.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Services\\Interfaces\\IRegistrationService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\IRegistrationService.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Services\\Interfaces\\IRegistrationService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\IRegistrationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T19:23:50.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RegistrationDto.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\DTOs\\RegistrationDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\RegistrationDto.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\DTOs\\RegistrationDto.cs",
+              "RelativeToolTip": "DTOs\\RegistrationDto.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBEAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T19:17:40.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IAdminService.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Services\\Interfaces\\IAdminService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\IAdminService.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Services\\Interfaces\\IAdminService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\IAdminService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T09:51:31.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdminService.cs",
+              "DocumentMoniker": "D:\\ET\\FlutterApp\\event_api\\Services\\AdminService.cs",
+              "RelativeDocumentMoniker": "Services\\AdminService.cs",
+              "ToolTip": "D:\\ET\\FlutterApp\\event_api\\Services\\AdminService.cs",
+              "RelativeToolTip": "Services\\AdminService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAcwBwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T09:51:53.634Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
