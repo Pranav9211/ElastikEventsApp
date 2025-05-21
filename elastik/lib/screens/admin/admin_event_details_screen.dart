@@ -17,6 +17,12 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
   List<Map<String, dynamic>> _comments = [];
   bool _isLoading = true;
   Map<String, dynamic>? _expandedParticipant;
+  List<Map<String, dynamic>> _aggregatedCustomFields = [];
+  bool _isLoadingCustomFields = false;
+  Map<String, String> _userNames = {}; // Maps userId to userName
+  bool _isLoadingComments = false;
+  bool _showComments = false;
+  bool _showCustomFields = false;
 
   @override
   void initState() {
@@ -26,6 +32,9 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
 
   Future<void> _loadData() async {
     try {
+      setState(() => _isLoading = true);
+
+      // Load existing data (participants and comments)
       final participantsRes = await _apiService.getEventParticipants(
         widget.event['eventId'],
       );
@@ -33,37 +42,115 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
         widget.event['eventId'],
       );
 
-      List<Map<String, dynamic>> enrichedParticipants = [];
+      // Store basic data
+      setState(() {
+        _participants =
+            (participantsRes.data as List).cast<Map<String, dynamic>>();
+        _comments = (commentsRes.data as List).cast<Map<String, dynamic>>();
+      });
 
-      for (var participant in (participantsRes.data as List)) {
-        final userId = participant['userId'];
-        List<Map<String, dynamic>> answers = [];
+      // Load user names for comments
+      await _loadCommentUserNames();
 
-        for (var field in widget.event['eventCustomFields']) {
-          final eventCustomFieldId = field['eventCustomFieldId'];
-          final registrationRes = await _apiService.getUserRegistrationForEvent(
+      // Load custom fields data
+      await _loadCustomFieldsData();
+
+      setState(() => _isLoading = false);
+    } catch (e) {
+      setState(() => _isLoading = false);
+    }
+  }
+
+  Future<void> _loadCommentUserNames() async {
+    setState(() => _isLoadingComments = true);
+
+    try {
+      final Map<String, String> userNames = {};
+
+      // Get unique user IDs from comments
+      final userIds = _comments.map((c) => c['userId'].toString()).toSet();
+
+      // Fetch each user's name
+      for (var userId in userIds) {
+        try {
+          final response = await _apiService.getUserById(userId);
+          if (response.data != null && response.data is Map) {
+            final user = response.data as Map<String, dynamic>;
+            userNames[userId] = user['name'] ?? 'Anonymous';
+          } else {
+            userNames[userId] = 'Anonymous';
+          }
+        } catch (e) {
+          userNames[userId] = 'Anonymous';
+        }
+      }
+
+      if (mounted) {
+        setState(() {
+          _userNames = userNames;
+          _isLoadingComments = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoadingComments = false);
+      }
+    }
+  }
+
+  Future<void> _loadCustomFieldsData() async {
+    if (!mounted) return;
+
+    setState(() => _isLoadingCustomFields = true);
+
+    try {
+      List<Map<String, dynamic>> aggregatedData = [];
+
+      // Get all custom fields for this event
+      final customFields = widget.event['eventCustomFields'] as List? ?? [];
+
+      // For each custom field, get all responses
+      for (var field in customFields) {
+        final fieldId = field['eventCustomFieldId'];
+        final fieldName = field['fieldName'] ?? 'Custom Field';
+
+        // Get all participants' responses for this field
+        for (var participant in _participants) {
+          final userId = participant['userId'];
+          final response = await _apiService.getUserRegistrationForEvent(
             userId: userId,
-            eventCustomFieldId: eventCustomFieldId,
+            eventCustomFieldId: fieldId,
           );
-          final registrations = registrationRes.data as List;
-          for (var reg in registrations) {
-            if (reg['answers'] != null) {
-              answers.addAll(
-                (reg['answers'] as List).cast<Map<String, dynamic>>(),
-              );
+
+          if (response.data != null && response.data is List) {
+            final registrations =
+                (response.data as List).cast<Map<String, dynamic>>();
+            for (var reg in registrations) {
+              if (reg['answers'] != null && reg['answers'] is List) {
+                final answers =
+                    (reg['answers'] as List).cast<Map<String, dynamic>>();
+                for (var answer in answers) {
+                  aggregatedData.add({
+                    'fieldName': fieldName,
+                    'questionText': answer['questionText'] ?? 'Question',
+                    'participantName': participant['name'] ?? 'Unknown',
+                    'value': answer['value']?.toString() ?? 'No answer',
+                  });
+                }
+              }
             }
           }
         }
-        enrichedParticipants.add({...participant, 'answers': answers});
       }
 
+      if (!mounted) return;
       setState(() {
-        _participants = enrichedParticipants;
-        _comments = (commentsRes.data as List).cast<Map<String, dynamic>>();
-        _isLoading = false;
+        _aggregatedCustomFields = aggregatedData;
+        _isLoadingCustomFields = false;
       });
     } catch (e) {
-      setState(() => _isLoading = false);
+      if (!mounted) return;
+      setState(() => _isLoadingCustomFields = false);
     }
   }
 
@@ -124,8 +211,6 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Divider(),
-
-        // Custom Field Answers section
         const Padding(
           padding: EdgeInsets.all(16.0),
           child: Text(
@@ -133,8 +218,6 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-
-        // Show custom field answers or no data message
         if (surveyAnswers.isNotEmpty)
           ...surveyAnswers.map((answer) {
             return Padding(
@@ -162,8 +245,6 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
               style: TextStyle(color: Colors.grey),
             ),
           ),
-
-        // Comments section
         const Padding(
           padding: EdgeInsets.all(16.0),
           child: Text(
@@ -171,8 +252,6 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-
-        // Show comments or no comments message
         if (participantComments.isNotEmpty)
           ...participantComments.map(
             (comment) => Padding(
@@ -194,7 +273,6 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text('No comments', style: TextStyle(color: Colors.grey)),
           ),
-
         const Divider(),
       ],
     );
@@ -213,6 +291,234 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
       ],
     );
   }
+
+  String _formatDate(String dateString) {
+    try {
+      final date = DateTime.parse(dateString);
+      return '${date.day}/${date.month}/${date.year}';
+    } catch (e) {
+      return dateString;
+    }
+  }
+
+  Widget _buildCommentsSection() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                const Text(
+                  'Comments',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: const BoxDecoration(
+                    color: Colors.grey,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Text(
+                    _comments.length.toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            IconButton(
+              icon: Icon(
+                _showComments ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                setState(() {
+                  _showComments = !_showComments;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+      if (!_showComments)
+        const SizedBox()
+      else if (_isLoadingComments)
+        const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Center(child: CircularProgressIndicator()),
+        )
+      else if (_comments.isEmpty)
+        const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            '   Sorry! No comments yet. ',
+            style: TextStyle(color: Colors.grey),
+          ),
+        )
+      else
+        ..._comments.map(
+          (comment) => Card(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            elevation: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        _userNames[comment['userId']] ?? 'Anonymous',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        _formatDate(comment['createdAt']),
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    comment['content'],
+                    style: const TextStyle(fontSize: 15),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+    ],
+  );
+}
+
+Widget _buildCustomFieldsSection() {
+  if (_isLoadingCustomFields) {
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Center(child: CircularProgressIndicator()),
+    );
+  }
+
+  if (_aggregatedCustomFields.isEmpty) {
+    return const SizedBox();
+  }
+
+  final Map<String, List<Map<String, dynamic>>> groupedAnswers = {};
+  for (var answer in _aggregatedCustomFields) {
+    final question = answer['questionText'];
+    if (!groupedAnswers.containsKey(question)) {
+      groupedAnswers[question] = [];
+    }
+    groupedAnswers[question]!.add(answer);
+  }
+
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Custom Fields',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            IconButton(
+              icon: Icon(
+                _showCustomFields ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                setState(() {
+                  _showCustomFields = !_showCustomFields;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+      if (!_showCustomFields)
+        const SizedBox()
+      else
+        ...groupedAnswers.entries.map((entry) {
+          return Card(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            elevation: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    entry.key,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  ...entry.value.map((answer) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              answer['participantName'],
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.grey[100],
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              answer['value'],
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+                ],
+              ),
+            ),
+          );
+        }),
+    ],
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -236,7 +542,7 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
                     Expanded(
                       child: TabBarView(
                         children: [
-                          // Participants Tab
+                          // Participants Tab - Keep exactly as it was
                           _participants.isEmpty
                               ? const Center(child: Text('No participants yet'))
                               : ListView.builder(
@@ -269,7 +575,7 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
                                   );
                                 },
                               ),
-                          // Insights Tab
+                          // Insights Tab - Add new sections
                           SingleChildScrollView(
                             child: Column(
                               children: [
@@ -285,7 +591,6 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
                                   ),
                                 ),
                                 _buildAvailabilityChart(),
-                                // Add legend below the chart
                                 Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Row(
@@ -303,6 +608,8 @@ class _AdminEventDetailsScreenState extends State<AdminEventDetailsScreen> {
                                     ],
                                   ),
                                 ),
+                                _buildCommentsSection(),
+                                _buildCustomFieldsSection(),
                               ],
                             ),
                           ),

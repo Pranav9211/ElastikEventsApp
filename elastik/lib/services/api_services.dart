@@ -127,9 +127,18 @@ class ApiService {
     return _dio.get('user');
   }
 
-  Future<Response> getUserById(String userId) {
-    return _dio.get('user/$userId');
+Future<Response> getUserById(String userId) async {
+  try {
+    final response = await _dio.get('user/$userId');
+    return response;
+  } catch (e) {
+    // Return empty response if user not found
+    return Response(
+      requestOptions: RequestOptions(path: ''),
+      data: null,
+    );
   }
+}
   
   // Gets the current user's ID from the JWT token
   Future<String> getCurrentUserId() async {
