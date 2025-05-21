@@ -91,7 +91,7 @@ A full-featured Event Management Application built using **Flutter** for the fro
 
 ## 🙌 Contributors
 
-- **Pranav Bharti** - [LinkedIn](https://www.linkedin.com/in/pranav-bharti)
+- **Pranav Bharti** - [LinkedIn](https://www.linkedin.com/in/pranavbharti9211)
 
 ---
 
